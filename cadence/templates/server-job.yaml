@@ -251,7 +251,7 @@ spec:
           {{- if eq (include "cadence.persistence.sql.pluginName" (list $ $store)) "mysql" }}
           # args: ["cadence-sql-tool", "update-schema", "-d", "/etc/cadence/schema/mysql/v57/{{ include "cadence.persistence.schema" $store }}/versioned"]
           args: ['sh', '-c', 'cadence-sql-tool update-schema -d /etc/cadence/schema/mysql/v57/{{ include "cadence.persistence.schema" $store }}/versioned']
-          {{- else eq (include "cadence.persistence.sql.pluginName" (list $ $store)) "postgres" }}
+          {{- else if eq (include "cadence.persistence.sql.pluginName" (list $ $store)) "postgres" }}
           args: ['sh', '-c', 'cadence-sql-tool update-schema -d /etc/cadence/schema/postgres/{{ include "cadence.persistence.schema" $store }}/versioned']
           {{- end }}
           {{- end }}
